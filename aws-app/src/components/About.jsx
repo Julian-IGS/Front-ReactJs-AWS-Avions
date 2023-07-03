@@ -1,6 +1,6 @@
 import React from 'react';
 import '../css/index.css'; 
-import airbusImage from '../asset/logo.PNG';
+import planeLogo from '../asset/avion.png';
 
 function About() {
   return (
@@ -21,7 +21,7 @@ function About() {
         <div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navigation-bar w-nav">
             <div class="w-container">
                 <a href="/" class="w-nav-brand">
-                <div class="site-name">MyAirbusPlane</div>
+                <div class="site-name">MyPlanes</div>
                 </a>
                 <nav role="navigation" class="navigation-menu w-nav-menu">
                     <a href="/" aria-current="page" class="navigation-link w-nav-link">Home</a>
@@ -36,7 +36,7 @@ function About() {
                 <div class="w-row">
                     <div class="w-hidden-small w-hidden-tiny w-col w-col-3">
                         <div class="white-wrapper">
-                        <img src={airbusImage} alt="Airbus" className="circle-profile" />
+                        <img src={planeLogo} alt="Airbus" className="circle-profile" />
                             <p class="site-description">
 The global leader in aerospace. Designs and manufactures commercial aircraft, helicopters, satellites, and space systems. Innovative technology, safety, comfort, and sustainability. Tailored solutions for airlines' needs. Pushing the boundaries of aviation.</p>
                             <div class="grey-rule"></div>

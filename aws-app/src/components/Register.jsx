@@ -1,6 +1,6 @@
 import React from 'react';
 import '../css/index.css'; 
-import airbusImage from '../asset/logo.PNG';
+import planeLogo from '../asset/avion.png';
 
 function Register() {
   return (
@@ -23,7 +23,7 @@ function Register() {
     <div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navigation-bar w-nav">
             <div class="w-container">
                 <a href="/" class="w-nav-brand">
-                    <div class="site-name">MyAirbusPlane</div>
+                    <div class="site-name">MyPlanes</div>
                 </a>
                 <nav role="navigation" class="navigation-menu w-nav-menu">
                 <a href="/" class="navigation-link w-nav-link">Home</a>
@@ -39,7 +39,7 @@ function Register() {
                 <div class="w-row">
                     <div class="w-hidden-small w-hidden-tiny w-col w-col-3">
                         <div class="white-wrapper">
-                        <img src={airbusImage} alt="Airbus" className="circle-profile" />
+                        <img src={planeLogo} alt="Airbus" className="circle-profile" />
                             <p class="site-description">
 The global leader in aerospace. Designs and manufactures commercial aircraft, helicopters, satellites, and space systems. Innovative technology, safety, comfort, and sustainability. Tailored solutions for airlines' needs. Pushing the boundaries of aviation.</p>
                             <div class="grey-rule"></div>
@@ -134,7 +134,7 @@ The global leader in aerospace. Designs and manufactures commercial aircraft, he
                 </div>
             </div>
         </div>
-        
+       
         <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=5e4b1a54e48aed761d1ff229" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
         <script src="https://assets.website-files.com/5e4b1a54e48aed761d1ff229/js/webflow.bf6a5095c.js" type="text/javascript"></script>
     </body>
