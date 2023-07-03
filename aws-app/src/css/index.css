@@ -161,11 +161,11 @@ figcaption {
 }
 
 .navigation-link:hover {
-  color: #333;
+  color: #047D95;
 }
 
 .navigation-link.w--current {
-  color: #333;
+  color: #047D95;
 }
 
 .navigation-bar {
@@ -280,13 +280,13 @@ figcaption {
   background-color: #c7c7c7;
 }
 
-.site-name {
+.site_name {
   display: block;
   margin-top: 11px;
-  color: #333;
+  color: #047D95;
   font-size: 24px;
   line-height: 100%;
-  text-decoration: none;
+  font-weight: bold;
 }
 
 .site-name.w--current {
@@ -478,13 +478,13 @@ figcaption {
 .small-post-link1 {
   display: inline-block;
   margin-bottom: 15px;
-  color: #5f97fb;
+  color: #047D95;
   text-align: left;
   text-decoration: none;
 }
 
 .small-post-link:hover {
-  color: #333;
+  color: #000;
 }
 
 .feature-posts-list {

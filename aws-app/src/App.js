@@ -1,8 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
-import Register from './components/Register';
-import About from './components/About';
-import Login from './components/Login';
+import Register from './components/PlaneCreate';
+import Details from './components/Details';
 import "@aws-amplify/ui-react/styles.css";
 import {
   withAuthenticator,
@@ -11,19 +10,18 @@ import {
   View,
   Card,
 } from "@aws-amplify/ui-react";
+import PlaneCreate from './components/PlaneCreate';
 
 function App({ signOut }) {
   return (
     
     <BrowserRouter>
     <View className="App">
-      <Button onClick={signOut}>Sign Out</Button>
     </View>
       <Routes>
         <Route exact path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/plane-details" element={<Details />} />
+        <Route path="/create-my-plane" element={<PlaneCreate />} />
       </Routes>
     </BrowserRouter>
   );

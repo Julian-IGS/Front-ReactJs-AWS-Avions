@@ -1,15 +1,24 @@
 import React from 'react';
 import '../css/index.css'; 
-import planeLogo from '../asset/avion.png';
-
+import planeLogo from '../asset/big-plane.png';
+import { Auth } from 'aws-amplify';
 
 
 function Home() {
+
+    async function signOut() {
+        try {
+          await Auth.signOut();
+        } catch (error) {
+          console.log('error signing out: ', error);
+        }
+      }
+
   return (
     <html data-wf-domain="denali-template.webflow.io" data-wf-page="5e4b1a54e48aed29b41ff22f" data-wf-site="5e4b1a54e48aed761d1ff229" data-wf-status="1">
     <head>
         <meta charSet="utf-8"/>
-        <title>About</title>
+        <title>Myplane</title>
         <meta content="width=device-width, initial-scale=1" name="viewport"/>
         <meta content="Webflow" name="generator"/>
         <link href="https://assets.website-files.com/5e4b1a54e48aed761d1ff229/css/denali-template.webflow.170e98de3.css" rel="stylesheet" type="text/css"/>
@@ -23,11 +32,10 @@ function Home() {
         <div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" className="navigation-bar w-nav">
             <div className="w-container">
                 <a href="/" className="w-nav-brand">
-                    <div className="site-name">MyPlanes</div>
+                    <div className="site_name">MyPlanes</div>
                 </a>
                 <nav role="navigation" className="navigation-menu w-nav-menu">
-                <a href="/Login" className="navigation-link w-nav-link">Login</a>
-                    <a href="/Register" className="navigation-link w-nav-link">Register</a>
+                    <a className="navigation-link w-nav-link" onClick={signOut}>Log out</a> 
                 </nav>
                 <div className="menu-button w-nav-button">
                     <div className="w-icon-nav-menu"></div>
@@ -46,7 +54,7 @@ function Home() {
                             <div className="feature-posts-list w-dyn-list">
                                 <div role="list" className="w-dyn-items">
                                     <div role="listitem" className="w-dyn-item">
-                                        <a href="/posts/half-and-half-variety-milk-viennese-body-cappuccino" className="small-post-link1">Create my own plane</a>
+                                        <a href="./create-my-plane" className="small-post-link1">Create my own airplane</a>
                                     </div>
                                 </div>
                             </div>
@@ -73,7 +81,7 @@ function Home() {
                                 <div className="body-copy w-richtext">
                                     <h1>Plane 1</h1>
                                 </div>
-                                <a href="/about" className="button_blue">Plane details</a>
+                                <a href="/plane-details" className="button_blue">Plane details</a>
                             </div>
                         </div>
                     </div>
@@ -84,7 +92,7 @@ function Home() {
                                 <div className="body-copy w-richtext">
                                     <h1>Plane 2</h1>
                                 </div>
-                                <a href="/about" className="button_blue">Plane details</a>
+                                <a href="/plane-details" className="button_blue">Plane details</a>
                             </div>
                         </div>
                     </div>
@@ -95,7 +103,7 @@ function Home() {
                                 <div className="body-copy w-richtext">
                                     <h1>Plane 3</h1>
                                 </div>
-                                <a href="/about" className="button_blue">Plane details</a>
+                                <a href="/plane-details" className="button_blue">Plane details</a>
                             </div>
                         </div>
                     </div>
