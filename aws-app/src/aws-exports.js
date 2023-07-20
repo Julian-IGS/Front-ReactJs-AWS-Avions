@@ -5,5 +5,7 @@ export default {
     "REGION": 'eu-west-2',
     "USER_POOL_APP_CLIENT_ID": '5i0lluddheulv1sdotupcioub5',
     "USER_POOL_ID":'eu-west-2_X8yHvYuHE',
+    
 }
 
+// https://inqez9auw6.execute-api.eu-west-2.amazonaws.com/prod

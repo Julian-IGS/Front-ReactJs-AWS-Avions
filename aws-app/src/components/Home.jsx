@@ -1,10 +1,63 @@
-import React from 'react';
+
 import '../css/index.css'; 
 import planeLogo from '../asset/big-plane.png';
 import { Auth } from 'aws-amplify';
-
+import anime from 'animejs/lib/anime.es.js';
+import React, { useEffect } from 'react';
+import plane from '../asset/sticker-avion-vue-de-haut-removebg-preview.png';
 
 function Home() {
+
+    
+    useEffect(() => {
+        let planeItems = document.querySelectorAll('.post-content');
+      
+        planeItems.forEach(item => {
+          item.addEventListener('mouseenter', () => {
+            anime({
+              targets: item,
+              scale: 1.05,
+              translateX: {
+                value: '20px', // Décalage vers la droite
+                duration: 200
+              },
+              duration: 200
+            });
+          });
+      
+          item.addEventListener('mouseleave', () => {
+            anime({
+              targets: item,
+              scale: 1.0,
+              translateX: {
+                value: '0', // Rétablir la position initiale
+                duration: 200
+              },
+              duration: 200
+            });
+          });
+        });
+      }, []);
+      
+    
+    
+      useEffect(() => {
+        anime({
+          targets: '.moving-image',
+          translateX: [
+            { value: '0vw', duration: 0 }, // position de départ
+            { value: '200vw', duration: 2000 } // position finale
+          ],
+          easing: 'linear',
+          complete: (anim) => {
+            document.querySelector('.moving-image').style.display = 'none';
+          }
+        });
+      }, []);
+      
+    
+    
+    
 
     async function signOut() {
         try {
@@ -25,6 +78,7 @@ function Home() {
         <link href="https://fonts.googleapis.com" rel="preconnect"/>
         <link href="https://fonts.gstatic.com" rel="preconnect" crossOrigin="anonymous"/>
         <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+        <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
         <link href="../src/asset/airbus.png" rel="shortcut icon" type="image/x-icon"/>
         <link href="https://assets.website-files.com/img/webclip.png" rel="apple-touch-icon"/>
     </head>
@@ -32,16 +86,17 @@ function Home() {
         <div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" className="navigation-bar w-nav">
             <div className="w-container">
                 <a href="/" className="w-nav-brand">
-                    <div className="site_name">MyPlanes</div>
+                    <div className="site_name">MyPlanes </div>
                 </a>
                 <nav role="navigation" className="navigation-menu w-nav-menu">
-                    <a className="navigation-link w-nav-link" onClick={signOut}>Log out</a> 
+                    <a className="navigation-link w-nav-link" onClick={signOut}>Sign out</a> 
                 </nav>
                 <div className="menu-button w-nav-button">
                     <div className="w-icon-nav-menu"></div>
                 </div>
             </div>
         </div>
+        <img src={plane} className="moving-image" alt="Moving Plane"/>
         <div className="content-wrapper">
             <div className="w-container">
                 <div className="w-row">
@@ -110,7 +165,6 @@ function Home() {
                 </div>
             </div>
         </div>
-        
         <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=5e4b1a54e48aed761d1ff229" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossOrigin="anonymous"></script>
         <script src="https://assets.website-files.com/5e4b1a54e48aed761d1ff229/js/webflow.bf6a5095c.js" type="text/javascript"></script>
     </body>

@@ -450,6 +450,13 @@ figcaption {
   font-size: 22px;
   line-height: 26px;
 }
+.moving-image {
+  position: fixed;
+  z-index: 9999;
+  left: -100%; 
+}
+
+
 
 .white-wrapper {
   padding: 20px;
@@ -657,4 +664,9 @@ figcaption {
   .blog-page-image {
     height: 210px;
   }
+
+
+
+  
+  
 }
