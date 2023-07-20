@@ -38,9 +38,7 @@ function Home() {
           });
         });
       }, []);
-      
-    
-    
+
       useEffect(() => {
         anime({
           targets: '.moving-image',
@@ -105,31 +103,17 @@ function Home() {
                         <img src={planeLogo} alt="Airbus" className="circle-profile" />
                             <p className="site-description">
                             Welcome to our website! Our platform serves as a repository for existing aircraft while also allowing creativity to thrive by offering the opportunity to design your own airplane</p>
-                            <div className="grey-rule"></div>
                             <div className="feature-posts-list w-dyn-list">
                                 <div role="list" className="w-dyn-items">
-                                    <div role="listitem" className="w-dyn-item">
-                                        <a href="./create-my-plane" className="small-post-link1">Create my own airplane</a>
-                                    </div>
+                                    <div role="listitem" className="w-dyn-item" style={{ marginBottom: '20px' }}>
+                                        
+                                        <a href="./create-my-plane" className="button_blue">Create my own airplane 🛠️</a>
+                                    </div >
                                 </div>
-                            </div>
-                            <div className="grey-rule"></div>
-                            <div className="social-link-group">
-                                <a href="#" class="social-icon-link w-inline-block">
-                                    <img src="https://assets.website-files.com/5e4b1a54e48aed761d1ff229/5e4b1a54e48aed39811ff2c6_social-03.svg" width="25" alt=""/>
-                                </a>
-                                <a href="#" className="social-icon-link w-inline-block">
-                                    <img src="https://assets.website-files.com/5e4b1a54e48aed761d1ff229/5e4b1a54e48aed1ad11ff2da_social-07.svg" width="25" alt=""/>
-                                </a>
-                                <a href="#" className="social-icon-link w-inline-block">
-                                    <img src="https://assets.website-files.com/5e4b1a54e48aed761d1ff229/5e4b1a54e48aed1f5b1ff2bf_social-18.svg" width="25" alt=""/>
-                                </a>
-                                <a href="#" className="social-icon-link w-inline-block">
-                                    <img src="https://assets.website-files.com/5e4b1a54e48aed761d1ff229/5e4b1a54e48aed7e751ff288_social-09.svg" width="25" alt=""/>
-                                </a>
                             </div>
                         </div>
                     </div>
+                    
                     <div className="content-column w-col w-col-9">
                         <div className="post-wrapper">
                             <div className="post-content">
