@@ -1,6 +1,6 @@
 import React from 'react';
 import '../css/index.css'; 
-import planeLogo from '../asset/big-plane.png';
+import planeLogo from '../asset/avion1.gif';
 import { Auth } from 'aws-amplify';
 
 function PlaneCreate() {
@@ -41,6 +41,7 @@ function PlaneCreate() {
                 </div>
             </div>
         </div>
+
         <div className="content-wrapper">
             <div className="w-container">
                 <div className="w-row">
@@ -49,90 +50,46 @@ function PlaneCreate() {
                         <img src={planeLogo} alt="Airbus" className="circle-profile" />
                             <p className="site-description">
                             Welcome to our website! Our platform serves as a repository for existing aircraft while also allowing creativity to thrive by offering the opportunity to design your own airplane</p>
-                            <div className="grey-rule"></div>
-                            <div className="feature-posts-list w-dyn-list">
-                                <div role="list" className="w-dyn-items">
-                                    <div role="listitem" className="w-dyn-item">
-                                        <a href="./create-my-plane" className="small-post-link1">Create my own airplane</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="grey-rule"></div>
-                            <div className="social-link-group">
-                                <a href="#" class="social-icon-link w-inline-block">
-                                    <img src="https://assets.website-files.com/5e4b1a54e48aed761d1ff229/5e4b1a54e48aed39811ff2c6_social-03.svg" width="25" alt=""/>
-                                </a>
-                                <a href="#" className="social-icon-link w-inline-block">
-                                    <img src="https://assets.website-files.com/5e4b1a54e48aed761d1ff229/5e4b1a54e48aed1ad11ff2da_social-07.svg" width="25" alt=""/>
-                                </a>
-                                <a href="#" className="social-icon-link w-inline-block">
-                                    <img src="https://assets.website-files.com/5e4b1a54e48aed761d1ff229/5e4b1a54e48aed1f5b1ff2bf_social-18.svg" width="25" alt=""/>
-                                </a>
-                                <a href="#" className="social-icon-link w-inline-block">
-                                    <img src="https://assets.website-files.com/5e4b1a54e48aed761d1ff229/5e4b1a54e48aed7e751ff288_social-09.svg" width="25" alt=""/>
-                                </a>
-                            </div>
                         </div>
                     </div>
                     <div class="content-column w-col w-col-9">
                         <div class="post-wrapper">
-                            <div class="post-content">                              
+                            <div class="post-content">
                                 <div class="form-wrapper w-form">
-                                    <form id="email-form" name="email-form" data-name="Email Form" method="get" data-wf-page-id="5e4b1a54e48aed2fe71ff231" data-wf-element-id="17c5e4f0-de69-e391-efc3-33fdb018902c">
-                                        <label for="Name">Create the plane</label>
-                                        <input type="email" id="emailInputRegister" class="text-field w-input" maxlength="256" name="Name" data-name="Name" placeholder="Email"  pattern=".*" required/>
+                                    <form id="plane-form" name="plane-form" data-name="Plane Form" method="post" data-wf-page-id="5e4b1a54e48aed2fe71ff231" data-wf-element-id="17c5e4f0-de69-e391-efc3-33fdb018902c">
+                                        <label for="planeName">Plane Name</label>
+                                        <input type="text" id="planeName" class="text-field w-input" maxlength="256" name="planeName" data-name="PlaneName" placeholder="Airbus A380" required />
 
-                                        <label htmlFor="password">Password</label>
-                                        <input type="password" id="passwordInputRegister" className="text-field w-input" maxLength="256" name="password" data-name="Password" placeholder="Enter your password"  pattern=".*" required/>
-                                        
-                                        <label htmlFor="password">Confirm Password</label>
-                                        <input type="password" id="password2InputRegister" className="text-field w-input" maxLength="256" name="password" data-name="Password" placeholder="Enter your password"  pattern=".*" required/>
-                                        
-                                        <input type="submit" value="Login" className="button w-button"/>
+                                        <label for="planeType">Plane Type</label>
+                                        <input type="text" id="planeType" class="text-field w-input" maxlength="256" name="planeType" data-name="PlaneType" placeholder="Wide-body Commercial Airliner" required />
+
+                                        <label for="planeManufacturer">Plane Manufacturer</label>
+                                        <input type="text" id="planeManufacturer" class="text-field w-input" maxlength="256" name="planeManufacturer" data-name="PlaneManufacturer" placeholder="Airbus" required />
+
+                                        <label for="planeCapacity">Plane Capacity</label>
+                                        <input type="number" id="planeCapacity" class="text-field w-input" min="1" max="850" name="planeCapacity" data-name="PlaneCapacity" placeholder="850" required />
+
+                                        <label for="planeWeight">Plane Weight (in kg)</label>
+                                        <input type="number" id="planeWeight" class="text-field w-input" min="100000" max="575000" name="planeWeight" data-name="PlaneWeight" placeholder="575000" required />
+
+                                        <label for="planeSpeed">Plane Speed (in km/h)</label>
+                                        <input type="number" id="planeSpeed" class="text-field w-input" min="900" max="1000" name="planeSpeed" data-name="PlaneSpeed" placeholder="945" required />
+
+                                        <label for="planeRange">Plane Range (in km)</label>
+                                        <input type="number" id="planeRange" class="text-field w-input" min="15000" max="15400" name="planeRange" data-name="PlaneRange" placeholder="15200" required />
+
+                                        <label for="planeImage">Plane Image URL</label>
+                                        <input type="url" id="planeImage" class="text-field w-input" name="planeImage" data-name="PlaneImage" placeholder="https://example.com/airbus_a380.jpg" required />
+
+                                        <input type="submit" value="Create" class="button_blue" />
                                     </form>
                                     <div class="success-message w-form-done">
-                                        <p class="success-text">Thank you! Your submission has been received!</p>
+                                        <p class="success-text">Thank you! Your plane has been created!</p>
                                     </div>
                                     <div class="w-form-fail">
                                         <p>Oops! Something went wrong while submitting the form</p>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="sidebar-on-mobile">
-                            <div class="white-wrapper">
-                                <img src="https://assets.website-files.com/5e4b1a54e48aed761d1ff229/5e4b1a54e48aed65841ff2a5_photo-1443180236447-432ea00e6ead.jpg" alt="" class="circle-profile"/>
-                                <p class="site-description">Denali is a simple responsive blog template. Easily add new posts using the Editor or change layout and design using the Designer.</p>
-                                <div class="grey-rule"></div>
-                                <h2 class="small-heading">Featured Posts:</h2>
-                                <div class="feature-posts-list w-dyn-list">
-                                    <div role="list" class="w-dyn-items">
-                                        <div role="listitem" class="w-dyn-item">
-                                            <a href="/posts/half-and-half-variety-milk-viennese-body-cappuccino" class="small-post-link">According a funnily until pre-set or arrogant well cheerful</a>
-                                        </div>
-                                        <div role="listitem" class="w-dyn-item">
-                                            <a href="/posts/steamed-siphon-froth-mazagran-cafe-au-lait" class="small-post-link">Overlaid the jeepers uselessly much excluding</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="grey-rule"></div>
-                                <div class="social-link-group">
-                                    <a href="#" class="social-icon-link w-inline-block">
-                                        <img src="https://assets.website-files.com/5e4b1a54e48aed761d1ff229/5e4b1a54e48aed39811ff2c6_social-03.svg" width="25" alt=""/>
-                                    </a>
-                                    <a href="#" class="social-icon-link w-inline-block">
-                                        <img src="https://assets.website-files.com/5e4b1a54e48aed761d1ff229/5e4b1a54e48aed1ad11ff2da_social-07.svg" width="25" alt=""/>
-                                    </a>
-                                    <a href="#" class="social-icon-link w-inline-block">
-                                        <img src="https://assets.website-files.com/5e4b1a54e48aed761d1ff229/5e4b1a54e48aed1f5b1ff2bf_social-18.svg" width="25" alt=""/>
-                                    </a>
-                                    <a href="#" class="social-icon-link w-inline-block">
-                                        <img src="https://assets.website-files.com/5e4b1a54e48aed761d1ff229/5e4b1a54e48aed7e751ff288_social-09.svg" width="25" alt=""/>
-                                    </a>
-                                </div>
-                                <p class="built-with-webflow">
-                                    Built with <a target="_blank" href="https://webflow.com" class="webflow-link">Webflow</a>
-                                </p>
                             </div>
                         </div>
                     </div>

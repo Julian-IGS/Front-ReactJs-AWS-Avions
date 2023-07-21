@@ -1,6 +1,6 @@
 import React from 'react';
 import '../css/index.css'; 
-import planeLogo from '../asset/big-plane.png';
+import planeLogo from '../asset/avion1.gif';
 import { Auth } from 'aws-amplify';
 
 function Details() {
@@ -49,76 +49,32 @@ function Details() {
                         <img src={planeLogo} alt="Airbus" className="circle-profile" />
                             <p className="site-description">
                             Welcome to our website! Our platform serves as a repository for existing aircraft while also allowing creativity to thrive by offering the opportunity to design your own airplane</p>
-                            <div className="grey-rule"></div>
                             <div className="feature-posts-list w-dyn-list">
                                 <div role="list" className="w-dyn-items">
-                                    <div role="listitem" className="w-dyn-item">
-                                        <a href="./create-my-plane" className="small-post-link1">Create my own airplane</a>
-                                    </div>
+                                    <div role="listitem" className="w-dyn-item" style={{ marginBottom: '20px' }}>
+                                        
+                                        <a href="./create-my-plane" className="button_blue">Create My Own Airplane </a>
+                                    </div >
                                 </div>
                             </div>
-                            <div className="grey-rule"></div>
-                            <div className="social-link-group">
-                                <a href="#" class="social-icon-link w-inline-block">
-                                    <img src="https://assets.website-files.com/5e4b1a54e48aed761d1ff229/5e4b1a54e48aed39811ff2c6_social-03.svg" width="25" alt=""/>
-                                </a>
-                                <a href="#" className="social-icon-link w-inline-block">
-                                    <img src="https://assets.website-files.com/5e4b1a54e48aed761d1ff229/5e4b1a54e48aed1ad11ff2da_social-07.svg" width="25" alt=""/>
-                                </a>
-                                <a href="#" className="social-icon-link w-inline-block">
-                                    <img src="https://assets.website-files.com/5e4b1a54e48aed761d1ff229/5e4b1a54e48aed1f5b1ff2bf_social-18.svg" width="25" alt=""/>
-                                </a>
-                                <a href="#" className="social-icon-link w-inline-block">
-                                    <img src="https://assets.website-files.com/5e4b1a54e48aed761d1ff229/5e4b1a54e48aed7e751ff288_social-09.svg" width="25" alt=""/>
-                                </a>
-                            </div>
                         </div>
-                    </div>
+                    </div>                    
                     <div class="content-column w-col w-col-9">
                         <div class="post-wrapper">
                             <div class="post-content">
                                 <div class="body-copy w-richtext">
-                                    <h1>About me</h1>
-                                    <p>The rich text element allows you to create and format headings, paragraphs, blockquotes, images, and video all in one place instead of having to add and format them individually. Just double-click and easily create content.</p>
-                                    <h2>Something else here</h2>
-                                    <p>Maecenas faucibus mollis interdum. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Curabitur blandit tempus porttitor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula porta felis euismod semper.</p>
-                                    <p>Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec id elit non mi porta gravida at eget metus. Donec ullamcorper nulla non metus auctor fringilla.</p>
-                                </div>
-                                <a href="/contact" class="button w-button">Get in touch</a>
-                            </div>
-                        </div>
-                        <div class="sidebar-on-mobile">
-                            <div class="white-wrapper">
-                                <img src="https://assets.website-files.com/5e4b1a54e48aed761d1ff229/5e4b1a54e48aed65841ff2a5_photo-1443180236447-432ea00e6ead.jpg" alt="" class="circle-profile"/>
-                                <p class="site-description">Denali is a simple responsive blog template. Easily add new posts using the Editor or change layout and design using the Designer.</p>
-                                <div class="grey-rule"></div>
-                                <h2 class="small-heading">Featured Posts:</h2>
-                                <div class="feature-posts-list w-dyn-list">
-                                    <div role="list" class="w-dyn-items">
-                                        <div role="listitem" class="w-dyn-item">
-                                            <a href="/posts/half-and-half-variety-milk-viennese-body-cappuccino" class="small-post-link">According a funnily until pre-set or arrogant well cheerful</a>
-                                        </div>
-                                        <div role="listitem" class="w-dyn-item">
-                                            <a href="/posts/steamed-siphon-froth-mazagran-cafe-au-lait" class="small-post-link">Overlaid the jeepers uselessly much excluding</a>
-                                        </div>
+                                    <h1>Plane Information</h1>
+                                    <div class="plane-data">
+                                        <p><strong>Plane Name:</strong> <span id="displayPlaneName"></span></p>
+                                        <p><strong>Plane Type:</strong> <span id="displayPlaneType"></span></p>
+                                        <p><strong>Plane Manufacturer:</strong> <span id="displayPlaneManufacturer"></span></p>
+                                        <p><strong>Plane Capacity:</strong> <span id="displayPlaneCapacity"></span></p>
+                                        <p><strong>Plane Weight (in kg):</strong> <span id="displayPlaneWeight"></span></p>
+                                        <p><strong>Plane Speed (in km/h):</strong> <span id="displayPlaneSpeed"></span></p>
+                                        <p><strong>Plane Range (in km):</strong> <span id="displayPlaneRange"></span></p>
+                                        <p><strong>Plane Image:</strong> <span id="displayPlaneImage"></span></p>
                                     </div>
                                 </div>
-                                <div class="grey-rule"></div>
-                                <div class="social-link-group">
-                                    <a href="#" class="social-icon-link w-inline-block">
-                                        <img src="https://assets.website-files.com/5e4b1a54e48aed761d1ff229/5e4b1a54e48aed39811ff2c6_social-03.svg" width="25" alt=""/>
-                                    </a>
-                                    <a href="#" class="social-icon-link w-inline-block">
-                                        <img src="https://assets.website-files.com/5e4b1a54e48aed761d1ff229/5e4b1a54e48aed1ad11ff2da_social-07.svg" width="25" alt=""/>
-                                    </a>
-                                    <a href="#" class="social-icon-link w-inline-block">
-                                        <img src="https://assets.website-files.com/5e4b1a54e48aed761d1ff229/5e4b1a54e48aed1f5b1ff2bf_social-18.svg" width="25" alt=""/>
-                                    </a>
-                                    <a href="#" class="social-icon-link w-inline-block">
-                                        <img src="https://assets.website-files.com/5e4b1a54e48aed761d1ff229/5e4b1a54e48aed7e751ff288_social-09.svg" width="25" alt=""/>
-                                    </a>
-                                </div>
-                                
                             </div>
                         </div>
                     </div>

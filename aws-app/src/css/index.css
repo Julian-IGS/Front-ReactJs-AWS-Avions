@@ -1,4 +1,4 @@
-/* Generated on: Thu Nov 12 2020 22:33:24 GMT+0000 (Coordinated Universal Time) */
+/* Generated on: Thu Nov 12 2020 22:33:24 GMT+0000 (Coordinated Universal Time) */body
 /* ==========================================================================
    normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css 
    ========================================================================== */
@@ -13,7 +13,9 @@
    Start of custom Webflow CSS
    ========================================================================== */
 body {
-  background-color: #f0f0f0;
+  background-image: url("../asset/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   font-family: Lato, sans-serif;
   color: #333;
   font-size: 14px;
@@ -95,7 +97,7 @@ ol {
 
 img {
   display: inline-block;
-  max-width: 100%;
+  max-width: 100px;
 }
 
 blockquote {
@@ -324,6 +326,9 @@ figcaption {
   border-radius: 5px;
   background-color: #fff;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+  max-width: 500px; /* Définissez la largeur maximale souhaitée pour le formulaire */
+  padding: 20px; /* Ajoutez un espace intérieur pour le contenu du formulaire */
+       
 }
 
 .blog-image {
@@ -346,6 +351,7 @@ figcaption {
 .post-content {
   padding: 20px;
 }
+
 
 .post-summary {
   display: inline;
@@ -414,7 +420,11 @@ figcaption {
 .text-field {
   margin-bottom: 15px;
   border-radius: 3px;
+    width: 100%; /* Par défaut, la largeur est de 100%, vous pouvez ajuster cette valeur selon vos besoins */
+    max-width: 400px; /* Définissez la largeur maximale souhaitée pour les champs de texte */
+    margin-bottom: 10px; /* Ajoutez une marge en bas pour l'espacement entre les champs */
 }
+
 
 .text-field.text-area {
   min-height: 110px;
@@ -552,6 +562,7 @@ figcaption {
 
   .post-wrapper {
     margin-bottom: 20px;
+  
   }
 
   .blog-image {
@@ -611,6 +622,7 @@ figcaption {
 
   .post-content {
     padding: 20px;
+    
   }
 
   .button-wrapper {
@@ -665,6 +677,11 @@ figcaption {
   .blog-page-image {
     height: 210px;
   }
+
+  /* Ajoutez ce style dans votre fichier CSS */
+.plane-image {
+  width: 100px;
+}
 
 
 

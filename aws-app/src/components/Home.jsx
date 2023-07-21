@@ -1,16 +1,14 @@
 
 import '../css/index.css'; 
-import planeLogo from '../asset/big-plane.png';
+import planeLogo from '../asset/avion1.gif';
 import { Auth } from 'aws-amplify';
 import anime from 'animejs/lib/anime.es.js';
 import React, { useEffect } from 'react';
-import plane from '../asset/sticker-avion-vue-de-haut-removebg-preview.png';
 
 function Home() {
-
     
     useEffect(() => {
-        let planeItems = document.querySelectorAll('.post-content');
+        let planeItems = document.querySelectorAll('.post-wrapper');
       
         planeItems.forEach(item => {
           item.addEventListener('mouseenter', () => {
@@ -39,23 +37,6 @@ function Home() {
         });
       }, []);
 
-      useEffect(() => {
-        anime({
-          targets: '.moving-image',
-          translateX: [
-            { value: '0vw', duration: 0 }, // position de départ
-            { value: '200vw', duration: 2000 } // position finale
-          ],
-          easing: 'linear',
-          complete: (anim) => {
-            document.querySelector('.moving-image').style.display = 'none';
-          }
-        });
-      }, []);
-      
-    
-    
-    
 
     async function signOut() {
         try {
@@ -94,7 +75,6 @@ function Home() {
                 </div>
             </div>
         </div>
-        <img src={plane} className="moving-image" alt="Moving Plane"/>
         <div className="content-wrapper">
             <div className="w-container">
                 <div className="w-row">
@@ -107,45 +87,39 @@ function Home() {
                                 <div role="list" className="w-dyn-items">
                                     <div role="listitem" className="w-dyn-item" style={{ marginBottom: '20px' }}>
                                         
-                                        <a href="./create-my-plane" className="button_blue">Create my own airplane 🛠️</a>
+                                        <a href="./create-my-plane" className="button_blue">Create My Own Airplane</a>
                                     </div >
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
-                    <div className="content-column w-col w-col-9">
-                        <div className="post-wrapper">
-                            <div className="post-content">
-                                <div className="body-copy w-richtext">
+                    <div className="w-row">
+                        <div className="w-hidden-small w-hidden-tiny w-col w-col-3">
+                            {/* Votre contenu existant */}
+                        </div>
+                        <div className="w-col w-col-9">
+                            <div className="content-column">
+                                <div className="post-wrapper">
                                     <h1>Plane 1</h1>
+                                    <a href="/plane-details" className="button_blue">Plane details</a>
                                 </div>
-                                <a href="/plane-details" className="button_blue">Plane details</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="content-column w-col w-col-9">
-                        <div className="post-wrapper">
-                            <div className="post-content">
-                                <div className="body-copy w-richtext">
+                                <div className="post-wrapper">
+                                    {/* Plane 2 */}
                                     <h1>Plane 2</h1>
+                                    <a href="/plane-details" className="button_blue">Plane details</a>
                                 </div>
-                                <a href="/plane-details" className="button_blue">Plane details</a>
+                                <div className="post-wrapper">
+                                    <h1>Plane 3</h1>
+                                    <a href="/plane-details" className="button_blue">Plane details</a>
+                                </div>
+                                <div className="post-wrapper">
+                                    <h1>Plane 4</h1>
+                                    <a href="/plane-details" className="button_blue">Plane details</a>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div className="content-column w-col w-col-9">
-                        <div className="post-wrapper">
-                            <div className="post-content">
-                                <div className="body-copy w-richtext">
-                                    <h1>Plane 3</h1>
-                                </div>
-                                <a href="/plane-details" className="button_blue">Plane details</a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
