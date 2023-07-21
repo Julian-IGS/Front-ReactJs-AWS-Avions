@@ -3,10 +3,29 @@ import '../css/index.css';
 import planeLogo from '../asset/avion1.gif';
 import { Auth } from 'aws-amplify';
 import anime from 'animejs/lib/anime.es.js';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function Home() {
     
+    const [data, setData] = useState(null);
+
+  useEffect(() => {
+    // Remplacez 'url_de_votre_api' par l'URL de votre API DynamoDB
+    axios.get('https://inqez9auw6.execute-api.eu-west-2.amazonaws.com/prod') 
+      .then((response) => {
+        // La réponse de l'API est convertie en JSON et mise à jour dans l'état
+        const responseData = JSON.parse(response.data.body);
+        setData(responseData.Items);
+      })
+      .catch((error) => {
+        console.error(`Il y a eu une erreur lors de l'appel de l'API : ${error}`);
+      });
+  }, []);
+
+
+
+
     useEffect(() => {
         let planeItems = document.querySelectorAll('.post-wrapper');
       
@@ -47,20 +66,7 @@ function Home() {
       }
 
   return (
-    <html data-wf-domain="denali-template.webflow.io" data-wf-page="5e4b1a54e48aed29b41ff22f" data-wf-site="5e4b1a54e48aed761d1ff229" data-wf-status="1">
-    <head>
-        <meta charSet="utf-8"/>
-        <title>Myplane</title>
-        <meta content="width=device-width, initial-scale=1" name="viewport"/>
-        <meta content="Webflow" name="generator"/>
-        <link href="https://assets.website-files.com/5e4b1a54e48aed761d1ff229/css/denali-template.webflow.170e98de3.css" rel="stylesheet" type="text/css"/>
-        <link href="https://fonts.googleapis.com" rel="preconnect"/>
-        <link href="https://fonts.gstatic.com" rel="preconnect" crossOrigin="anonymous"/>
-        <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
-        <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
-        <link href="../src/asset/airbus.png" rel="shortcut icon" type="image/x-icon"/>
-        <link href="https://assets.website-files.com/img/webclip.png" rel="apple-touch-icon"/>
-    </head>
+    
     <body>
         <div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" className="navigation-bar w-nav">
             <div className="w-container">
@@ -99,25 +105,16 @@ function Home() {
                         </div>
                         <div className="w-col w-col-9">
                             <div className="content-column">
-                                <div className="post-wrapper">
-                                    <h1>Plane 1</h1>
-                                    <a href="/plane-details" className="button_blue">Plane details</a>
-                                </div>
-                                <div className="post-wrapper">
-                                    {/* Plane 2 */}
-                                    <h1>Plane 2</h1>
-                                    <a href="/plane-details" className="button_blue">Plane details</a>
-                                </div>
-                                <div className="post-wrapper">
-                                    <h1>Plane 3</h1>
-                                    <a href="/plane-details" className="button_blue">Plane details</a>
-                                </div>
-                                <div className="post-wrapper">
-                                    <h1>Plane 4</h1>
-                                    <a href="/plane-details" className="button_blue">Plane details</a>
-                                </div>
+                                {data && data.map((item, index) => (
+                                    <div className="post-wrapper" key={index}>
+                                        <h1>Plane {index + 1}</h1>
+                                        <p>Id de l'avion : {item.PlaneId}</p>
+                                        <a href="/plane-details" className="button_blue">Plane details</a>
+                                    </div>
+                                ))}
                             </div>
                         </div>
+
                     </div>
 
                 </div>
@@ -126,8 +123,6 @@ function Home() {
         <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=5e4b1a54e48aed761d1ff229" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossOrigin="anonymous"></script>
         <script src="https://assets.website-files.com/5e4b1a54e48aed761d1ff229/js/webflow.bf6a5095c.js" type="text/javascript"></script>
     </body>
-</html>
-
   );
 }   
 export default Home;
