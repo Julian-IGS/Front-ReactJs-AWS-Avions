@@ -1,9 +1,26 @@
-import React from 'react';
+
 import '../css/index.css'; 
 import planeLogo from '../asset/avion1.gif';
 import { Auth } from 'aws-amplify';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 function Details() {
+    
+    const [data, setData] = useState(null);
+
+  useEffect(() => {
+    // Remplacez 'url_de_votre_api' par l'URL de votre API DynamoDB
+    axios.get('https://inqez9auw6.execute-api.eu-west-2.amazonaws.com/prod/planes') 
+      .then((response) => {
+        // La réponse de l'API est convertie en JSON et mise à jour dans l'état
+        const responseData = JSON.parse(response.data.body);
+        setData(responseData.Items);
+      })
+      .catch((error) => {
+        console.error(`Il y a eu une erreur lors de l'appel de l'API : ${error}`);
+      });
+  }, []);
 
     async function signOut() {
         try {
@@ -63,17 +80,21 @@ function Details() {
                         <div class="post-wrapper">
                             <div class="post-content">
                                 <div class="body-copy w-richtext">
-                                    <h1>Plane Information</h1>
+                                {data && data.map((item, index) => (
+                                    <div className="post-wrapper" key={index}>
+                                        <h1>Plane Information</h1>
                                     <div class="plane-data">
-                                        <p><strong>Plane Name:</strong> <span id="displayPlaneName"></span></p>
-                                        <p><strong>Plane Type:</strong> <span id="displayPlaneType"></span></p>
-                                        <p><strong>Plane Manufacturer:</strong> <span id="displayPlaneManufacturer"></span></p>
-                                        <p><strong>Plane Capacity:</strong> <span id="displayPlaneCapacity"></span></p>
-                                        <p><strong>Plane Weight (in kg):</strong> <span id="displayPlaneWeight"></span></p>
-                                        <p><strong>Plane Speed (in km/h):</strong> <span id="displayPlaneSpeed"></span></p>
-                                        <p><strong>Plane Range (in km):</strong> <span id="displayPlaneRange"></span></p>
+                                        <p><strong>Plane Name:</strong> <span id="displayPlaneName">{item.Name}</span></p>
+                                        <p><strong>Plane Type:</strong> <span id="displayPlaneType">{item.Type}</span></p>
+                                        <p><strong>Plane Manufacturer:</strong> <span id="displayPlaneManufacturer">{item.PlaneManufacturer}</span></p>
+                                        <p><strong>Plane Capacity:</strong> <span id="displayPlaneCapacity">{item.PlaneCapacity}</span></p>
+                                        <p><strong>Plane Weight (in kg):</strong> <span id="displayPlaneWeight">{item.PlaneWeight}</span></p>
+                                        <p><strong>Plane Speed (in km/h):</strong> <span id="displayPlaneSpeed">{item.PlaneSpeed}</span></p>
+                                        <p><strong>Plane Range (in km):</strong> <span id="displayPlaneRange">{item.PlaneRange}</span></p>
                                         <p><strong>Plane Image:</strong> <span id="displayPlaneImage"></span></p>
                                     </div>
+                                    </div>
+                                ))}
                                 </div>
                             </div>
                         </div>

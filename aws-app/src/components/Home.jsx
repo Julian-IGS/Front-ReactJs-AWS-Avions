@@ -107,8 +107,7 @@ function Home() {
                             <div className="content-column">
                                 {data && data.map((item, index) => (
                                     <div className="post-wrapper" key={index}>
-                                        <h1>Plane {index + 1}</h1>
-                                        <p>Id de l'avion : {item.PlaneId}</p>
+                                        <h1>{item.Name}</h1>
                                         <a href="/plane-details" className="button_blue">Plane details</a>
                                     </div>
                                 ))}
