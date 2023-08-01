@@ -95,10 +95,6 @@ ol {
   font-family: Lato, sans-serif;
 }
 
-img {
-  display: inline-block;
-  max-width: 100px;
-}
 
 blockquote {
   margin-bottom: 10px;
@@ -423,6 +419,7 @@ figcaption {
     width: 100%; /* Par défaut, la largeur est de 100%, vous pouvez ajuster cette valeur selon vos besoins */
     max-width: 400px; /* Définissez la largeur maximale souhaitée pour les champs de texte */
     margin-bottom: 10px; /* Ajoutez une marge en bas pour l'espacement entre les champs */
+    font-style: italic;
 }
 
 
@@ -682,9 +679,4 @@ figcaption {
 .plane-image {
   width: 100px;
 }
-
-
-
-  
-  
 }

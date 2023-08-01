@@ -105,10 +105,12 @@ function Home() {
                         </div>
                         <div className="w-col w-col-9">
                             <div className="content-column">
-                                {data && data.map((item, index) => (
+                                {data && data.map((item, index) => ( 
                                     <div className="post-wrapper" key={index}>
+                                        <img src={item.Url} className="image-container" style={{float: 'right', width: '200px', height: 'auto', position: 'relative', top: '0',right: '0',border: '5px solid #047D95',}}/>
                                         <h1>{item.Name}</h1>
                                         <a href="/plane-details" className="button_blue">Plane details</a>
+                                        
                                     </div>
                                 ))}
                             </div>

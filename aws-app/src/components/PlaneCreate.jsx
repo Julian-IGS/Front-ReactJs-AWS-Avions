@@ -1,17 +1,72 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../css/index.css'; 
 import planeLogo from '../asset/avion1.gif';
 import { Auth } from 'aws-amplify';
+import axios from 'axios';
 
 function PlaneCreate() {
-    
-    async function signOut() {
-        try {
-          await Auth.signOut();
-        } catch (error) {
-          console.log('error signing out: ', error);
-        }
+  async function signOut() {
+    try {
+      await Auth.signOut();
+    } catch (error) {
+      console.log('error signing out: ', error);
+    }
+  }
+
+  const [formData, setFormData] = useState({
+    planeName: '',
+    planeType: '',
+    planeManufacturer: '',
+    planeCapacity: '',
+    planeWeight: '',
+    planeSpeed: '',
+    planeRange: '',
+    planeImage: '',
+  });
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    // Vérifier si tous les champs obligatoires sont remplis
+    const inputs = event.target.querySelectorAll("input");
+    let allFilled = true;
+
+    inputs.forEach(input => {
+      if (input.value.trim() === "") {
+        allFilled = false;
+        input.classList.add("error"); // Ajouter une classe pour mettre en évidence le champ vide
+      } else {
+        input.classList.remove("error"); // Retirer la classe d'erreur si le champ est rempli
       }
+    });
+
+    // Afficher la popup si des champs sont vides
+    if (!allFilled) {
+      alert("Please fill in all required fields.");
+    } else {
+      // Envoyer les données du formulaire vers votre API AWS Lambda
+      try {
+        await axios.post('https://inqez9auw6.execute-api.eu-west-2.amazonaws.com/prod/planes', formData);
+
+        // Réinitialiser le formulaire après l'envoi réussi
+        setFormData({
+          planeName: '',
+          planeType: '',
+          planeManufacturer: '',
+          planeCapacity: '',
+          planeWeight: '',
+          planeSpeed: '',
+          planeRange: '',
+          planeImage: '',
+        });
+
+        alert('Le formulaire a été envoyé avec succès.');
+      } catch (error) {
+        console.error('Erreur lors de l\'envoi du formulaire :', error);
+        alert('Une erreur est survenue lors de l\'envoi du formulaire. Veuillez réessayer plus tard.');
+      }
+    }
+  };
 
   return (
     <html data-wf-domain="denali-template.webflow.io" data-wf-page="5e4b1a54e48aed29b41ff22f" data-wf-site="5e4b1a54e48aed761d1ff229" data-wf-status="1">
@@ -56,32 +111,32 @@ function PlaneCreate() {
                         <div class="post-wrapper">
                             <div class="post-content">
                                 <div class="form-wrapper w-form">
-                                    <form id="plane-form" name="plane-form" data-name="Plane Form" method="post" data-wf-page-id="5e4b1a54e48aed2fe71ff231" data-wf-element-id="17c5e4f0-de69-e391-efc3-33fdb018902c">
-                                        <label for="planeName">Plane Name</label>
-                                        <input type="text" id="planeName" class="text-field w-input" maxlength="256" name="planeName" data-name="PlaneName" placeholder="Airbus A380" required />
+                                    <form id="plane-form" name="plane-form" data-name="Plane Form" method="post" data-wf-page-id="5e4b1a54e48aed2fe71ff231" data-wf-element-id="17c5e4f0-de69-e391-efc3-33fdb018902c" onSubmit={handleSubmit}>
+                                        <label for="planeName">Plane Name<span class="required" style={{ color: "red" }}> *</span></label>
+                                        <input type="text" id="planeName" class="text-field w-input" maxlength="256" name="planeName" data-name="PlaneName" placeholder="Airbus A380"  />
+                                       
+                                        <label for="planeType">Plane Type<span class="required" style={{ color: "red" }}> *</span></label>
+                                        <input type="text" id="planeType" class="text-field w-input" maxlength="256" name="planeType" data-name="PlaneType" placeholder="Wide-body Commercial Airliner" />
 
-                                        <label for="planeType">Plane Type</label>
-                                        <input type="text" id="planeType" class="text-field w-input" maxlength="256" name="planeType" data-name="PlaneType" placeholder="Wide-body Commercial Airliner" required />
+                                        <label for="planeManufacturer">Plane Manufacturer<span class="required" style={{ color: "red" }}> *</span></label>
+                                        <input type="text" id="planeManufacturer" class="text-field w-input" maxlength="256" name="planeManufacturer" data-name="PlaneManufacturer" placeholder="Airbus"  />
 
-                                        <label for="planeManufacturer">Plane Manufacturer</label>
-                                        <input type="text" id="planeManufacturer" class="text-field w-input" maxlength="256" name="planeManufacturer" data-name="PlaneManufacturer" placeholder="Airbus" required />
+                                        <label for="planeCapacity">Plane Capacity<span class="required" style={{ color: "red" }}> *</span></label>
+                                        <input type="number" id="planeCapacity" class="text-field w-input" min="1" max="850" name="planeCapacity" data-name="PlaneCapacity" placeholder="850"  />
 
-                                        <label for="planeCapacity">Plane Capacity</label>
-                                        <input type="number" id="planeCapacity" class="text-field w-input" min="1" max="850" name="planeCapacity" data-name="PlaneCapacity" placeholder="850" required />
+                                        <label for="planeWeight">Plane Weight (in kg)<span class="required" style={{ color: "red" }}> *</span></label>
+                                        <input type="number" id="planeWeight" class="text-field w-input" min="100000" max="575000" name="planeWeight" data-name="PlaneWeight" placeholder="575000"  />
 
-                                        <label for="planeWeight">Plane Weight (in kg)</label>
-                                        <input type="number" id="planeWeight" class="text-field w-input" min="100000" max="575000" name="planeWeight" data-name="PlaneWeight" placeholder="575000" required />
+                                        <label for="planeSpeed">Plane Speed (in km/h)<span class="required" style={{ color: "red" }}> *</span></label>
+                                        <input type="number" id="planeSpeed" class="text-field w-input" min="900" max="1000" name="planeSpeed" data-name="PlaneSpeed" placeholder="945"  />
 
-                                        <label for="planeSpeed">Plane Speed (in km/h)</label>
-                                        <input type="number" id="planeSpeed" class="text-field w-input" min="900" max="1000" name="planeSpeed" data-name="PlaneSpeed" placeholder="945" required />
+                                        <label for="planeRange">Plane Range (in km)<span class="required" style={{ color: "red" }}> *</span></label>
+                                        <input type="number" id="planeRange" class="text-field w-input" min="15000" max="15400" name="planeRange" data-name="PlaneRange" placeholder="15200"  />
 
-                                        <label for="planeRange">Plane Range (in km)</label>
-                                        <input type="number" id="planeRange" class="text-field w-input" min="15000" max="15400" name="planeRange" data-name="PlaneRange" placeholder="15200" required />
+                                        <label for="planeImage">Plane Image URL<span class="required" style={{ color: "red" }}> *</span></label>
+                                        <input type="url" id="planeImage" class="text-field w-input" name="planeImage" data-name="PlaneImage" placeholder="https://example.com/airbus_a380.jpg" />
 
-                                        <label for="planeImage">Plane Image URL</label>
-                                        <input type="url" id="planeImage" class="text-field w-input" name="planeImage" data-name="PlaneImage" placeholder="https://example.com/airbus_a380.jpg" required />
-
-                                        <input type="submit" value="Create" class="button_blue" />
+                                        <input type="submit" value="Create" class="button_blue" id="createButton" />
                                     </form>
                                     <div class="success-message w-form-done">
                                         <p class="success-text">Thank you! Your plane has been created!</p>
@@ -96,7 +151,6 @@ function PlaneCreate() {
                 </div>
             </div>
         </div>
-       
         <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=5e4b1a54e48aed761d1ff229" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
         <script src="https://assets.website-files.com/5e4b1a54e48aed761d1ff229/js/webflow.bf6a5095c.js" type="text/javascript"></script>
     </body>
