@@ -78,7 +78,7 @@ p {
 }
 
 a {
-  color: #24a7ff;
+  color: #000;
   text-decoration: underline;
 }
 
@@ -142,6 +142,25 @@ figcaption {
   text-align: center;
   text-decoration: none;
 }
+
+.button_blue_left {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 20px;
+  border-radius: 3px;
+  background-color: #047D95;
+  -webkit-transition: background-color 200ms ease;
+  transition: background-color 200ms ease;
+  color: #fff;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  text-decoration: none;
+  margin-bottom: 13px; /* Add margin between the buttons, adjust as needed */
+}
+
+
 
 .button:hover {
   background-color: #333;
@@ -317,6 +336,15 @@ figcaption {
   color: #333;
 }
 
+.post-wrapper1 {
+  margin-bottom: 30px;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+  max-width: 500px; /* Définissez la largeur maximale souhaitée pour le formulaire */
+  padding: 20px; /* Ajoutez un espace intérieur pour le contenu du formulaire */
+  height: 140px;
+}
 .post-wrapper {
   margin-bottom: 30px;
   border-radius: 5px;
@@ -324,7 +352,6 @@ figcaption {
   box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
   max-width: 500px; /* Définissez la largeur maximale souhaitée pour le formulaire */
   padding: 20px; /* Ajoutez un espace intérieur pour le contenu du formulaire */
-       
 }
 
 .blog-image {
@@ -679,4 +706,24 @@ figcaption {
 .plane-image {
   width: 100px;
 }
+
+.plane-details-link {
+  display: inline-block;
+  padding: 11px 20px;
+  border-radius: 3px;
+  background-color: #047D95;
+  color: #fff;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  text-decoration: none;
+  /* Add transition for a nice effect when hovering over the link */
+  transition: background-color 200ms ease;
+}
+
+.plane-details-link:hover {
+  background-color: #036b81; /* Darker color on hover */
+  /* You can add additional hover effects as desired */
+}
+
 }

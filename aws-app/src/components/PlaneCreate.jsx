@@ -60,10 +60,10 @@ function PlaneCreate() {
           planeImage: '',
         });
 
-        alert('Le formulaire a été envoyé avec succès.');
-      } catch (error) {
-        console.error('Erreur lors de l\'envoi du formulaire :', error);
-        alert('Une erreur est survenue lors de l\'envoi du formulaire. Veuillez réessayer plus tard.');
+        alert('The form has been successfully submitted.');
+} catch (error) {
+    console.error('Error while submitting the form:', error);
+    alert('An error occurred while submitting the form. Please try again later.');
       }
     }
   };
@@ -105,6 +105,13 @@ function PlaneCreate() {
                         <img src={planeLogo} alt="Airbus" className="circle-profile" />
                             <p className="site-description">
                             Welcome to our website! Our platform serves as a repository for existing aircraft while also allowing creativity to thrive by offering the opportunity to design your own airplane</p>
+                            <div className="feature-posts-list w-dyn-list">
+                                <div role="list" className="w-dyn-items">
+                                    <div role="listitem" className="w-dyn-item" style={{ marginBottom: '20px' }}>
+                                        <a href="./" className="button_blue_left">Home</a>
+                                    </div >
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="content-column w-col w-col-9">

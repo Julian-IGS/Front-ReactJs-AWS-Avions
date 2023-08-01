@@ -92,8 +92,8 @@ function Home() {
                             <div className="feature-posts-list w-dyn-list">
                                 <div role="list" className="w-dyn-items">
                                     <div role="listitem" className="w-dyn-item" style={{ marginBottom: '20px' }}>
-                                        
-                                        <a href="./create-my-plane" className="button_blue">Create My Own Airplane</a>
+                                        <a href="./" className="button_blue_left">Home</a>
+                                        <a href="./create-my-plane" className="button_blue_left">Create My Own Airplane</a>
                                     </div >
                                 </div>
                             </div>
@@ -106,11 +106,10 @@ function Home() {
                         <div className="w-col w-col-9">
                             <div className="content-column">
                                 {data && data.map((item, index) => ( 
-                                    <div className="post-wrapper" key={index}>
-                                        <img src={item.Url} className="image-container" style={{float: 'right', width: '200px', height: 'auto', position: 'relative', top: '0',right: '0',border: '5px solid #047D95',}}/>
+                                    <div className="post-wrapper1" key={index}>
+                                        <img src={item.Url} className="image-container" style={{float: 'right', width: '150px', height: 'auto', position: 'relative', top: '0',right: '0',border: '5px solid #047D95',}}/>
                                         <h1>{item.Name}</h1>
-                                        <a href="/plane-details" className="button_blue">Plane details</a>
-                                        
+                                        <a href={`/plane-details?selectedPlane=${encodeURIComponent(JSON.stringify(item))}`} className="plane-details-link">Plane details</a>
                                     </div>
                                 ))}
                             </div>

@@ -6,6 +6,18 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 function Details() {
+
+    const [selectedPlane, setSelectedPlane] = useState(null);
+
+    useEffect(() => {
+        // Retrieve the selected airplane data from the URL query parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const selectedPlaneParam = urlParams.get('selectedPlane');
+        if (selectedPlaneParam) {
+            setSelectedPlane(JSON.parse(decodeURIComponent(selectedPlaneParam)));
+        }
+    }, []);
+
     
     const [data, setData] = useState(null);
 
@@ -69,7 +81,7 @@ function Details() {
                             <div className="feature-posts-list w-dyn-list">
                                 <div role="list" className="w-dyn-items">
                                     <div role="listitem" className="w-dyn-item" style={{ marginBottom: '20px' }}>
-                                        
+                                        <a href="./" className="button_blue_left">Home</a>
                                         <a href="./create-my-plane" className="button_blue">Create My Own Airplane </a>
                                     </div >
                                 </div>
@@ -78,25 +90,25 @@ function Details() {
                     </div>                    
                     <div class="content-column w-col w-col-9">
                         <div class="post-wrapper">
-                            <div class="post-content">
-                                <div class="body-copy w-richtext">
-                                {data && data.map((item, index) => (
-                                    <div className="post-wrapper" key={index}>
+                        <div class="post-content">
+                            <div class="body-copy w-richtext">
+                                {selectedPlane && (
+                                    <div className="post-wrapper">
                                         <h1>Plane Information</h1>
-                                    <div class="plane-data">
-                                        <p><strong>Plane Name:</strong> <span id="displayPlaneName">{item.Name}</span></p>
-                                        <p><strong>Plane Type:</strong> <span id="displayPlaneType">{item.Type}</span></p>
-                                        <p><strong>Plane Manufacturer:</strong> <span id="displayPlaneManufacturer">{item.PlaneManufacturer}</span></p>
-                                        <p><strong>Plane Capacity:</strong> <span id="displayPlaneCapacity">{item.PlaneCapacity}</span></p>
-                                        <p><strong>Plane Weight (in kg):</strong> <span id="displayPlaneWeight">{item.PlaneWeight}</span></p>
-                                        <p><strong>Plane Speed (in km/h):</strong> <span id="displayPlaneSpeed">{item.PlaneSpeed}</span></p>
-                                        <p><strong>Plane Range (in km):</strong> <span id="displayPlaneRange">{item.PlaneRange}</span></p>
-                                        <p><strong>Plane Image:</strong> <span id="displayPlaneImage"></span></p>
+                                        <div class="plane-data">
+                                            <p><strong>Plane Name:</strong> <span id="displayPlaneName">{selectedPlane.Name}</span></p>
+                                            <p><strong>Plane Type:</strong> <span id="displayPlaneType">{selectedPlane.Type}</span></p>
+                                            <p><strong>Plane Manufacturer:</strong> <span id="displayPlaneManufacturer">{selectedPlane.PlaneManufacturer}</span></p>
+                                            <p><strong>Plane Capacity:</strong> <span id="displayPlaneCapacity">{selectedPlane.PlaneCapacity}</span></p>
+                                            <p><strong>Plane Weight (in kg):</strong> <span id="displayPlaneWeight">{selectedPlane.PlaneWeight}</span></p>
+                                            <p><strong>Plane Speed (in km/h):</strong> <span id="displayPlaneSpeed">{selectedPlane.PlaneSpeed}</span></p>
+                                            <p><strong>Plane Range (in km):</strong> <span id="displayPlaneRange">{selectedPlane.PlaneRange}</span></p>
+                                            <img src={selectedPlane.Url} className="image-container" style={{  width: '350px', height: 'auto', position: 'relative', top: '0',right: '0',border: '5px solid #047D95',}}/>
+                                        </div>
                                     </div>
-                                    </div>
-                                ))}
-                                </div>
+                                )}
                             </div>
+                        </div>
                         </div>
                     </div>
                 </div>
