@@ -14,14 +14,15 @@ function PlaneCreate() {
   }
 
   const [formData, setFormData] = useState({
-    planeName: '',
-    planeType: '',
-    planeManufacturer: '',
-    planeCapacity: '',
-    planeWeight: '',
-    planeSpeed: '',
-    planeRange: '',
-    planeImage: '',
+    PlaneId: '',
+    Name: '',
+    Type: '',
+    PlaneManufacturer: '',
+    PlaneCapacity: '',
+    PlaneWeight: '',
+    PlaneSpeed: '',
+    PlaneRange: '',
+    Url: '',
   });
 
   const handleSubmit = async (event) => {
@@ -46,18 +47,31 @@ function PlaneCreate() {
     } else {
       // Envoyer les données du formulaire vers votre API AWS Lambda
       try {
-        await axios.post('https://inqez9auw6.execute-api.eu-west-2.amazonaws.com/prod/planes', formData);
+        const requestData = {
+          PlaneId: 4,  // Vous pouvez ajuster l'ID comme vous le souhaitez
+          Name: formData.planeName,
+          Type: formData.planeType,
+          PlaneManufacturer: formData.planeManufacturer,
+          PlaneCapacity: formData.planeCapacity,
+          PlaneWeight: formData.planeWeight,
+          PlaneSpeed: formData.planeSpeed,
+          PlaneRange: formData.planeRange,
+          Url: formData.planeImage,
+        };
+
+        await axios.post('https://inqez9auw6.execute-api.eu-west-2.amazonaws.com/prod/planes', requestData);
 
         // Réinitialiser le formulaire après l'envoi réussi
         setFormData({
-          planeName: '',
-          planeType: '',
-          planeManufacturer: '',
-          planeCapacity: '',
-          planeWeight: '',
-          planeSpeed: '',
-          planeRange: '',
-          planeImage: '',
+          PlaneId: '',
+          Name: '',
+          Type: '',
+          PlaneManufacturer: '',
+          PlaneCapacity: '',
+          PlaneWeight: '',
+          PlaneSpeed: '',
+          PlaneRange: '',
+          PlaneImage: '',
         });
 
         alert('The form has been successfully submitted.');
@@ -119,29 +133,29 @@ function PlaneCreate() {
                             <div class="post-content">
                                 <div class="form-wrapper w-form">
                                     <form id="plane-form" name="plane-form" data-name="Plane Form" method="post" data-wf-page-id="5e4b1a54e48aed2fe71ff231" data-wf-element-id="17c5e4f0-de69-e391-efc3-33fdb018902c" onSubmit={handleSubmit}>
-                                        <label for="planeName">Plane Name<span class="required" style={{ color: "red" }}> *</span></label>
-                                        <input type="text" id="planeName" class="text-field w-input" maxlength="256" name="planeName" data-name="PlaneName" placeholder="Airbus A380"  />
+                                        <label for="Name">Plane Name<span class="required" style={{ color: "red" }}> *</span></label>
+                                        <input type="text" id="Name" class="text-field w-input" maxlength="256" name="Name" data-name="Name" placeholder="Airbus A380"  />
                                        
-                                        <label for="planeType">Plane Type<span class="required" style={{ color: "red" }}> *</span></label>
-                                        <input type="text" id="planeType" class="text-field w-input" maxlength="256" name="planeType" data-name="PlaneType" placeholder="Wide-body Commercial Airliner" />
+                                        <label for="PlaneType">Plane Type<span class="required" style={{ color: "red" }}> *</span></label>
+                                        <input type="text" id="Type" class="text-field w-input" maxlength="256" name="planeType" data-name="PlaneType" placeholder="Wide-body Commercial Airliner" />
 
-                                        <label for="planeManufacturer">Plane Manufacturer<span class="required" style={{ color: "red" }}> *</span></label>
-                                        <input type="text" id="planeManufacturer" class="text-field w-input" maxlength="256" name="planeManufacturer" data-name="PlaneManufacturer" placeholder="Airbus"  />
+                                        <label for="PlaneManufacturer">Plane Manufacturer<span class="required" style={{ color: "red" }}> *</span></label>
+                                        <input type="text" id="PlaneManufacturer" class="text-field w-input" maxlength="256" name="PlaneManufacturer" data-name="PlaneManufacturer" placeholder="Airbus"  />
 
-                                        <label for="planeCapacity">Plane Capacity<span class="required" style={{ color: "red" }}> *</span></label>
-                                        <input type="number" id="planeCapacity" class="text-field w-input" min="1" max="850" name="planeCapacity" data-name="PlaneCapacity" placeholder="850"  />
+                                        <label for="PlaneCapacity">Plane Capacity<span class="required" style={{ color: "red" }}> *</span></label>
+                                        <input type="number" id="PlaneCapacity" class="text-field w-input" min="1" max="850" name="PlaneCapacity" data-name="PlaneCapacity" placeholder="850"  />
 
-                                        <label for="planeWeight">Plane Weight (in kg)<span class="required" style={{ color: "red" }}> *</span></label>
-                                        <input type="number" id="planeWeight" class="text-field w-input" min="100000" max="575000" name="planeWeight" data-name="PlaneWeight" placeholder="575000"  />
+                                        <label for="PlaneWeight">Plane Weight (in kg)<span class="required" style={{ color: "red" }}> *</span></label>
+                                        <input type="number" id="PlaneWeight" class="text-field w-input" min="100000" max="575000" name="PlaneWeight" data-name="PlaneWeight" placeholder="575000"  />
 
-                                        <label for="planeSpeed">Plane Speed (in km/h)<span class="required" style={{ color: "red" }}> *</span></label>
-                                        <input type="number" id="planeSpeed" class="text-field w-input" min="900" max="1000" name="planeSpeed" data-name="PlaneSpeed" placeholder="945"  />
+                                        <label for="PlaneSpeed">Plane Speed (in km/h)<span class="required" style={{ color: "red" }}> *</span></label>
+                                        <input type="number" id="PlaneSpeed" class="text-field w-input" min="900" max="1000" name="PlaneSpeed" data-name="PlaneSpeed" placeholder="945"  />
 
-                                        <label for="planeRange">Plane Range (in km)<span class="required" style={{ color: "red" }}> *</span></label>
-                                        <input type="number" id="planeRange" class="text-field w-input" min="15000" max="15400" name="planeRange" data-name="PlaneRange" placeholder="15200"  />
+                                        <label for="PlaneRange">Plane Range (in km)<span class="required" style={{ color: "red" }}> *</span></label>
+                                        <input type="number" id="PlaneRange" class="text-field w-input" min="15000" max="15400" name="PlaneRange" data-name="PlaneRange" placeholder="15200"  />
 
-                                        <label for="planeImage">Plane Image URL<span class="required" style={{ color: "red" }}> *</span></label>
-                                        <input type="url" id="planeImage" class="text-field w-input" name="planeImage" data-name="PlaneImage" placeholder="https://example.com/airbus_a380.jpg" />
+                                        <label for="Url">Plane Image URL<span class="required" style={{ color: "red" }}> *</span></label>
+                                        <input type="url" id="Url" class="text-field w-input" name="Url" data-name="Url" placeholder="https://example.com/airbus_a380.jpg" />
 
                                         <input type="submit" value="Create" class="button_blue" id="createButton" />
                                     </form>
