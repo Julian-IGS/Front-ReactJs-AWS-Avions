@@ -11,7 +11,6 @@ function Home() {
     const [data, setData] = useState(null);
 
   useEffect(() => {
-    // Remplacez 'url_de_votre_api' par l'URL de votre API DynamoDB
     axios.get('https://inqez9auw6.execute-api.eu-west-2.amazonaws.com/prod/planes') 
       .then((response) => {
         // La réponse de l'API est convertie en JSON et mise à jour dans l'état

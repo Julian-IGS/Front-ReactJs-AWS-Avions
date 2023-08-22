@@ -5,10 +5,7 @@ import Details from './components/Details';
 import "@aws-amplify/ui-react/styles.css";
 import {
   withAuthenticator,
-  Button,
-  Heading,
   View,
-  Card,
 } from "@aws-amplify/ui-react";
 import PlaneCreate from './components/PlaneCreate';
 
